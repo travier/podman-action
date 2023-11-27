@@ -1,5 +1,5 @@
-FROM quay.io/fedora/fedora:latest
+FROM quay.io/podman/stable
 
-RUN dnf update -y &&\
-    dnf install -y podman buildah skopeo &&\
-    dnf clean all
+RUN dnf install -y buildah skopeo --exclude container-selinux &&\
+    dnf clean all &&\
+    rm -rf /var/cache /var/log/dnf* /var/log/yum.*
