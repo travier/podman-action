@@ -30,9 +30,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Setup QEMU for multi-arch builds
+        shell: bash
+        run: |
+          sudo apt install qemu-user-static
+
       - name: Build container image
         uses: redhat-actions/buildah-build@v2
         with:
+          archs: x86_64, aarch64, ppc64le, s390x
           context: ${{ env.NAME }}
           image: ${{ env.NAME }}
           tags: latest
