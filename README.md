@@ -48,6 +48,7 @@ How to configure sigstore signature verification in podman:
 
 ```
 $ sudo mkdir /etc/pki/containers
+$ curl -O "https://raw.githubusercontent.com/travier/podman-action/main/quay.io-travier-containers.pub"
 $ sudo cp quay-travier-containers.pub /etc/pki/containers/
 $ sudo restorecon -RFv /etc/pki/containers
 
@@ -58,21 +59,37 @@ docker:
 $ sudo restorecon -RFv /etc/containers/registries.d/quay.io-travier.yaml
 
 $ cat /etc/containers/policy.json
-...
+{
+    "default": [
+        {
+            "type": "reject"
+        }
+    ],
     "transports": {
         "docker": {
+            ...
             "quay.io/travier": [
                 {
                     "type": "sigstoreSigned",
-                    "keyPath": "/etc/pki/containers/quay-travier-containers.pub",
+                    "keyPath": "/etc/pki/containers/quay.io-travier-containers.pub",
                     "signedIdentity": {
                         "type": "matchRepository"
                     }
                 }
             ],
+            ...
+            "": [
+                {
+                    "type": "insecureAcceptAnything"
+                }
+            ]
+        },
+        ...
+    }
+}
 ...
 ```
 
 ## License
 
-See [LICENSE](LICENSE).
+See [LICENSE](LICENSE) or CC0.
