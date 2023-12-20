@@ -8,13 +8,15 @@ on:
   pull_request:
     branches:
       - main
-    paths-ignore:
-      - README.md
+    paths:
+      - 'podman-action/**'
+      - '.github/workflows/container.yml'
   push:
     branches:
       - main
-    paths-ignore:
-      - README.md
+    paths:
+      - 'podman-action/**'
+      - '.github/workflows/container.yml'
   schedule:
     - cron:  '0 0 * * MON'
 
