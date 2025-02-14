@@ -17,8 +17,8 @@ on:
     paths:
       - 'podman-action/**'
       - '.github/workflows/container.yml'
-  schedule:
-    - cron:  '0 0 * * MON'
+  # schedule:
+  #   - cron:  '0 0 * * MON'
 
 permissions: read-all
 

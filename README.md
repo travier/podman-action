@@ -4,6 +4,9 @@ Based on the official [podman
 container](https://quay.io/repository/podman/stable) with buildah and skopeo
 included on top.
 
+**NOTE: This is usually no longer needed now that GitHub supports Ubuntu 24.04
+based runners which include newer versions of podman and buildah.**
+
 ## How to use
 
 Use the podman, buildah and skopeo actions from
