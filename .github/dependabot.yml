@@ -8,3 +8,7 @@ updates:
       default-days: 7
     commit-message:
       prefix: "ci"
+    groups:
+      actions:
+        patterns:
+          - "*"
