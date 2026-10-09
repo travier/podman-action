@@ -35,7 +35,7 @@ concurrency:
 
 jobs:
   build-push-image:
-    runs-on: "ubuntu-24.04"
+    runs-on: "ubuntu-26.04"
     steps:
       - name: "Checkout repo"
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -46,7 +46,7 @@ jobs:
         shell: bash
         run: |
           sudo apt update
-          sudo apt install qemu-user-static
+          sudo apt install qemu-user-binfmt
 
       - name: "Build container image"
         uses: redhat-actions/buildah-build@719e3c40d8af9790c23eca13f7daa339f2867034 # v3.1.0
